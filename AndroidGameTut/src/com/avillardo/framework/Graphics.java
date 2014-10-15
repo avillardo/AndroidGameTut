@@ -4,3 +4,5 @@ public interface Graphics {
 
 }
 //desktop
+
+//laptop
