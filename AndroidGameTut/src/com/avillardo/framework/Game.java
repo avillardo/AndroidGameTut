@@ -17,10 +17,3 @@ public interface Game {
 	public Screen getInitScreen();
 
 }
-//desktop
-
-//desktop 2
-
-//laptop
-
-//desktop
