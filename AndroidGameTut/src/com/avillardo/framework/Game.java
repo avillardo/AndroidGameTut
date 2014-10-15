@@ -10,11 +10,10 @@ public interface Game {
 	
 	public Graphics getGraphics();
 	
-	public void scrunsetScreen(Screen screen);
-	//laptop
+	public void setScreen(Screen screen);
+
 	public Screen getCurrentScreen();
 	
 	public Screen getInitScreen();
 
 }
-//laptop
