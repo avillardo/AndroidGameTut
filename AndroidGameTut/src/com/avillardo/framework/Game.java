@@ -17,8 +17,3 @@ public interface Game {
 	public Screen getInitScreen();
 
 }
-//edited
-
-//commit laptop
-
-//desktop commit //
