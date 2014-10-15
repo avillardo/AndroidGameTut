@@ -6,3 +6,5 @@ public interface Graphics {
 //desktop
 
 //laptop
+
+//desktop
