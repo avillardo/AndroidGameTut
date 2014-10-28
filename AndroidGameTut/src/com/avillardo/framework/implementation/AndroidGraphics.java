@@ -76,6 +76,37 @@ public class AndroidGraphics implements Graphics {
 		return new AndroidImage(bitmap, format);
 
 	}
+	
+	@Override
+	public void clearScreen(int color) {
+		canvas.drawRGB((color & 0xff0000) >> 16, (color & 0xff00) >> 8,
+				(color & 0xf00));
+	}
+	
+	@Override
+	public void drawLine(int x, int y, int x2, int y2, int color) {
+		paint.setColor(color);
+		canvas.drawLine(x, y, x2, y2, paint);
+	}
+	
+	@Override
+	public void drawRect(int x, int y, int width, int height, int color) {
+		paint.setColor(color);
+		paint.setStyle(Style.FILL);
+		canvas.drawRect(x, y, x + width -1, y + height - 1, paint);
+	}
+	
+	@Override
+	public void drawARGB(int a, int r, int g, int b) {
+		paint.setStyle(Style.FILL);
+		canvas.drawARGB(a, r, g, b);
+	}
+	
+	@Override
+	public void drawString(String text, int x, int y, Paint paint) {
+		canvas.drawText(text, x, y, paint);
+	}
+	
 
 
 }
