@@ -18,13 +18,31 @@ import com.avillardo.framework.FileIO;
 public class AndroidFileIO  implements FileIO{
 	Context context;
 	AssetManager assets;
-	String externalStrongPath;
+	String externalStoragePath;
 	
 	public AndroidFileIO(Context context) {
 		this.context = context;
 		this.assets = context.getAssets();
-		this.externalStrongPath = Environment.getExternalStorageDirectory()
+		this.externalStoragePath = Environment.getExternalStorageDirectory()
 				.getAbsolutePath() + File.separator;
 	}
 
+	@Override
+    public InputStream readAsset(String file) throws IOException {
+        return assets.open(file);
+    }
+	
+	@Override
+	public InputStream readFile(String file) throws IOException {
+		return new FileInputStream(externalStoragePath + file);
+	}
+	
+	@Override
+	public OutputStream writeFile(String file) throws IOException {
+		return new FileOutputStream(externalStoragePath + file);
+	}
+	
+	public SharedPreferences getSharedPref() {
+		return PreferenceManager.getDefaultSharedPreferences(context);
+	}
 }
