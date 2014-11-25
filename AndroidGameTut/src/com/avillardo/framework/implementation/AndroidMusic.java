@@ -65,6 +65,88 @@ OnSeekCompleteListener, OnPreparedListener, OnVideoSizeChangedListener {
 	}
 	
 	
+	@Override
+	public void play() {
+		if (this.mediaPlayer.isPlaying())
+			return;
+		
+		try {
+			synchronized (this) {
+				if (!isPrepared)
+					mediaPlayer.prepare();
+				mediaPlayer.start();
+			}
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
+	@Override
+	public void setLooping(boolean isLooping) {
+		mediaPlayer.setLooping(isLooping);
+	}
+	
+	@Override
+	public void setVolume(float volume) {
+		mediaPlayer.setVolume(volume, volume);
+	}
+	
+	@Override
+	public void stop() {
+		if (this.mediaPlayer.isPlaying () == true){
+			this.mediaPlayer.stop();
+			
+			synchronized (this) {
+				isPrepared = false;
+			}
+		}
+	}
+	
+	@Override
+	public void onCompletion(MediaPlayer player) {
+		synchronized (this) {
+			isPrepared = false;
+		}
+	}
+	
+	@Override
+	public void seekBegin() {
+		mediaPlayer.seekTo(0);
+	}
+	
+	@Override
+	public void onPrepared(MediaPlayer player) {
+		synchronized (this) {
+			isPrepared = true;
+		}
+	}
+	
+	@Override
+	public void onSeekComplete(MediaPlayer player) {
+		
+	}
+	
+	@Override
+	public void onVideoSizeChanged(MediaPlayer player, int width, int height) {
+		
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
