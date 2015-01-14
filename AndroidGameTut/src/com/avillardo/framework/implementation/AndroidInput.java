@@ -20,7 +20,7 @@ public class AndroidInput implements Input {
 		
 	}
 	
-	@OVerride
+	@Override
 	public boolean isTouchDown(int pointer) {
 		return touchHandler.isTouchDown(pointer);
 	}
