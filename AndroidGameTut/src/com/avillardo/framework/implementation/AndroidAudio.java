@@ -37,7 +37,7 @@ public class AndroidAudio implements Audio{
 		try {
 			AssetFileDescriptor assetDescriptor = assets.openFd(filename);
 			int soundId = soundPool.load(assetDescriptor, 0);
-			return new Androidsound(soundPool, soundId);
+			return new AndroidSound(soundPool, soundId);
 		
 		} catch (IOException e) {
 			throw new RuntimeException("Couldn't load sound '" + filename + "'");
