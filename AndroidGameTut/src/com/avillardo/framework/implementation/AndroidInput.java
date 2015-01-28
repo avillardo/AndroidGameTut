@@ -37,6 +37,6 @@ public class AndroidInput implements Input {
 	
 	@Override
 	public List<TouchEvent> getTouchEvents() {
-		return touchHAndler.getTouchEvents();
+		return touchHandler.getTouchEvents();
 	}
 }

@@ -26,7 +26,7 @@ public abstract class AndroidGame extends Activity implements Game {
 	Input input;
 	FileIO fileIO;
 	Screen screen;
-	Wakelock wakelock;
+	WakeLock wakeLock;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -55,8 +55,8 @@ public abstract class AndroidGame extends Activity implements Game {
 		screen = getInitScreen();
 		setContentView(renderView);
 		
-		PowerManager powermanager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		wakelock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "MyGame");
+		PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+		wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "MyGame");
 		
 	}
 
